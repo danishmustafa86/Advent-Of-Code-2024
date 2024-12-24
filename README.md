@@ -26,7 +26,7 @@ The structure is as follows:
 ## How to Run Solutions on your system ?
 1. Clone the repository:
    ```bash
-   git clone https://github.com/arhamansari11/advent_of_Code.git
+   git clone https://github.com/danishmustafa86/Advent-Of-Code-2024
    
 2. Move into the project directory:
    ```bash
