@@ -1,20 +1,23 @@
-# Advent of Code 🎄
+# 🎄 Advent of Code 2024
 
-Welcome to my **Advent of Code** repository! This repository contains my solutions for the annual [Advent of Code](https://adventofcode.com/) programming challenges, spanning all problems from **Day 01** to **Day 25**.
-
-## 📚 About Advent of Code  
-Advent of Code is an annual series of programming puzzles released daily from December 1st to 25th. These challenges are designed to improve problem-solving and coding skills while providing a festive way to code during the holiday season.
+Welcome to my **Advent of Code** repository! 🎉 This repository contains my solutions for the annual [Advent of Code](https://adventofcode.com/) programming challenges, spanning all puzzles from **Day 01** to **Day 25**.
 
 ---
 
-## Repository Structure  
+## 📚 About Advent of Code  
+**Advent of Code** is an annual series of programming puzzles released daily from December 1st to 25th. These challenges are designed to improve problem-solving and coding skills while providing a festive way to code during the holiday season. 🎅
+
+---
+
+## 🗂️ Repository Structure  
 Each day's challenge is organized into its own folder, containing:
 
 - **`input.txt`**: The input data for the challenge.
 - **`solution.py`** (or relevant file): My solution to the problem.
 - Additional files as needed (e.g., explanatory comments, alternate approaches).
 
-The structure is as follows:
+### Folder Structure:
+
 
 ├── Day 1/ │ ├── input.txt │ └── solution.py 
 <br/>
