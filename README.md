@@ -44,7 +44,7 @@ Each day's challenge is organized into its own folder, containing:
    python solution.py
    
 ## Features🌟
-- Efficient Solutions: Solutions are optimized for performance and readability.
-- Dynamic Inputs: All solutions are designed to work with different inputs.
-- Commented Code: Each solution is well-documented for clarity.
-- Diverse Approaches: Some days include multiple solutions showcasing various algorithms.
+- 💡 Efficient Solutions: Solutions are optimized for performance and readability.
+- 📥 Dynamic Inputs: All solutions are designed to work with different inputs.
+- 📝 Commented Code: Each solution is well-documented for clarity.
+- 🔍 Diverse Approaches: Some days include multiple solutions showcasing various algorithms.
