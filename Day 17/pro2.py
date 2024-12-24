@@ -1,96 +1,64 @@
-from collections import *
-from functools import *
-from itertools import *
-from math import *
 import re
+from collections import *
+import numpy as np
 
-def ints(s):
-    return list(map(int, re.findall(r'-?\d+', s)))
+# Directly using the given input values
+a = 50230824
+b = 0
+c = 0
+prog = [2,4,1,3,7,5,0,3,1,4,4,7,5,5,3,0]
 
-# Initialize program with correct values
-program = [2,4,1,7,7,5,0,3,1,7,4,1,5,5,3,0]  # Using the program from comment
-ip = 0
-A = 50230824
-B = C = 0
-
-def combo(x):
-    if x == 0: return 0
-    if x == 1: return 1
-    if x == 2: return 2
-    if x == 3: return 3
-    if x == 4: return A
-    if x == 5: return B
-    if x == 6: return C
-    return None
-
-def step():
-    global ip, A, B, C
-    if ip >= len(program):
-        raise IndexError("Program counter out of bounds")
-    
-    instr = program[ip]
-    opcode = program[ip + 1]
-    ip += 2
-    
-    try:
-        if instr == 0:
-            A = A // (2 ** combo(opcode))
-        elif instr == 1:
-            B = B ^ opcode
-        elif instr == 2:
-            B = combo(opcode) % 8
-        elif instr == 3:
-            if A != 0:
-                ip = opcode
-        elif instr == 4:
-            B = B ^ C
-        elif instr == 5:
-            return combo(opcode) % 8
-        elif instr == 6:
-            B = A // (2 ** combo(opcode))
-        elif instr == 7:
-            C = A // (2 ** combo(opcode))
-    except Exception as e:
-        print(f"Error in instruction {instr} with opcode {opcode}: {e}")
-        raise
-
-def run(a):
-    global A, B, C, ip
-    ip = 0
-    A = a
-    B = 0
-    C = 0
-    result = []
-    
-    while ip < len(program):
-        try:
-            x = step()
-            if x is not None:
-                result.append(x)
-        except IndexError:
-            break
-        except Exception as e:
-            print(f"Error during execution with A={A}: {e}")
-            break
-    return result
-
-def main():
-    a = 35282534841844
-    prev = 0
-    count = 0
-    target = [2,4,1,7,7,5,0,3,1,7,4,1,5,5,3,0]
-    
-    while count < 1000:  # Limit iterations to prevent infinite loop
-        x = run(a)
-        if x[:6] == [2, 4, 1, 2, 7, 5]:
-            print(f"Found partial match: a={a}, len={len(x)}, diff={a-prev}, output={x}")
-            prev = a
-        if x == target:
-            print(f"Found exact match at a={a}")
+# Function to handle the program logic
+def run(prog, a, b, c):
+    def combo(num):
+        if num <= 3:
+            return num
+        elif num == 4:
             return a
-        a += 2097152
-        count += 1
-    print("No solution found within iteration limit")
+        elif num == 5:
+            return b
+        elif num == 6:
+            return c
 
-if __name__ == "__main__":
-    result = main()
+    o = []
+    ip = 0
+    while ip < len(prog):
+        instr = prog[ip]
+        operand = prog[ip + 1]
+        if instr == 0:
+            a = a // (2 ** combo(operand))
+        elif instr == 1:
+            b = b ^ operand
+        elif instr == 2:
+            b = combo(operand) % 8
+        elif instr == 3:
+            if a != 0:
+                ip = operand - 2
+        elif instr == 4:
+            b = b ^ c
+        elif instr == 5:
+            o.append(combo(operand) % 8)
+        elif instr == 6:
+            b = a // (2 ** combo(operand))
+        elif instr == 7:
+            c = a // (2 ** combo(operand))
+        ip += 2
+    return o
+
+# Run the program and print the output
+print(*run(prog, a, b, c), sep=",")
+
+# Recursive function to find a solution
+def rec(n, a):
+    if n == -1:
+        return a
+    a <<= 3
+    for x in range(8):
+        if run(prog, a + x, 0, 0) == prog[n:]:
+            s = rec(n - 1, a + x)
+            if s != -1:
+                return s
+    return -1
+
+# Print the result of the recursive function
+print(rec(len(prog) - 1, 0))
