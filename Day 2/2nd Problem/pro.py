@@ -2,7 +2,7 @@ def is_safe(report):
     """
     Checks if a report is safe without any modifications.
     A report is safe if all numbers are either consistently increasing
-    or consistently decreasing with differences between 1 and 3.
+    or consistentlye decreasing and with differences between 1 and 3.
     """
     inc, dec = 0, 0
     for i in range(len(report) - 1):
