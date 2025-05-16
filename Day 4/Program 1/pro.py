@@ -6,8 +6,8 @@ def count_xmas(grid):
     directions = [
         (0, 1), (0, -1),  # Horizontal
         (1, 0), (-1, 0),  # Vertical
-        (1, 1), (-1, -1), # Diagonal (top-left  bottom-right)
-        (1, -1), (-1, 1)  # Diagonal (top-rig bottom-left)
+        (1, 1), (-1, -1), # Diagonal (top-left to bottom-right)
+        (1, -1), (-1, 1)  # Diagonal (top-right to bottom-left)
     ]
     
     count = 0
